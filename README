@@ -1,3 +1,3 @@
 This is going to be a wrapper for API functionality that I need for another app.I will not be implementing all the functionality. Please send me pull requests!
 
-The logic for each call for a specific type is stored in the Resources.cs file. Cards, boards, members, etc are all examples of resources.
+The logic for each call for a specific type is stored in https://github.com/detroitpro/Trello.net/blob/master/src/TrelloNet/Domain/Resources.cs Cards, boards, members, etc are all examples of resources.
