@@ -1,4 +1,4 @@
-namespace Trello.net.Tests
+namespace TrelloNet.Domain
 {
     public class Entity
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Trello.net.Tests
+namespace TrelloNet.Domain
 {
     public class Card : Entity
     {

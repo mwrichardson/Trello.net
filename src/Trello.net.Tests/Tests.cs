@@ -1,8 +1,5 @@
-﻿using System;
-using System.Globalization;
-using System.Web.Script.Serialization;
-using NUnit.Framework;
-using RestSharp;
+﻿using NUnit.Framework;
+using TrelloNet;
 
 
 namespace Trello.net.Tests
@@ -10,32 +7,39 @@ namespace Trello.net.Tests
     [TestFixture]
     public class Tests
     {
+        [TestFixtureSetUp]
+        public void FixtureSetUp()
+        {
+            Api.Init(TestConstants.OAuthAccessToken, TestConstants.ApiKey);
+        }
 
         [Test]
-        public void test()
+        public void get_card_test()
         {
-            var request = new RestRequest
-                              {
-                                  Resource = "/1/members/me/boards"
-                              };
 
-            var client = new RestClient("https://api.trello.com")
-                             {
-                                 Authenticator = new OAuth2UriQueryParameterAuthenticator("02c7301e3c04f2e2841846bdece6d0db4be9e8cb078b87aa0923665b1fad22e0")
-
-                             };
-            client.AddDefaultParameter("key", "1bf6786c573d795f2b7fc8837c008aab");
-            var response = client.Execute<dynamic>(request);
-            Console.WriteLine(response.Content.ToString(CultureInfo.InvariantCulture));
-
-            JavaScriptSerializer jss = new JavaScriptSerializer();
-            var d = jss.Deserialize<dynamic>(response.Content);
-
-            Console.WriteLine(d[0]["id"]);
-
-
-            var cards = TrelloNet.Get().Cards("");
-
+            Api.Init(TestConstants.OAuthAccessToken, TestConstants.ApiKey);
+            dynamic cards = Api.Get().Cards("");
+            Assert.AreEqual("4f2bf38d72b7c1293517af86", cards[0]["id"]);
+            //cards[0]["id"].Should().Be("4f2bf38d72b7c1293517af86");
         }
+
+        [Test]
+        public void test2()
+        {
+
+           
+            dynamic cards = Api.Get().Cards("");
+            Assert.AreEqual("4f2bf38d72b7c1293517af86", cards[0]["id"]);
+            //cards[0]["id"].Should().Be("4f2bf38d72b7c1293517af86");
+        }
+    }
+
+
+    public static class TestConstants
+    {
+        public const string ApiKey = "ce55781ad91b8024c67b6fe52c3f732a";
+
+        //detroitproapitest
+        public const string OAuthAccessToken = "1304827778ec13c9065d55ee47541d2f048dc996b70b68ba6f7e00bfa723692e"; 
     }
 }
