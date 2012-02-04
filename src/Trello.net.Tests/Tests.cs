@@ -1,45 +1,32 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using TrelloNet;
 
 
 namespace Trello.net.Tests
 {
     [TestFixture]
-    public class Tests
+    public class Tests : TestBase
     {
-        [TestFixtureSetUp]
-        public void FixtureSetUp()
-        {
-            Api.Init(TestConstants.OAuthAccessToken, TestConstants.ApiKey);
-        }
+     
 
         [Test]
         public void get_card_test()
         {
-
-            Api.Init(TestConstants.OAuthAccessToken, TestConstants.ApiKey);
-            dynamic cards = Api.Get().Cards("");
-            Assert.AreEqual("4f2bf38d72b7c1293517af86", cards[0]["id"]);
-            //cards[0]["id"].Should().Be("4f2bf38d72b7c1293517af86");
+            //The only way to get cards is to call in and request a board. the board has an array of cards on it.
+            //we might want to create C# domain objects for each response type.
+            //we prob want to but I have not got around it it just yet.
+            dynamic board = Api.Get().Cards("4f2bf38d72b7c1293517af86");
+            Assert.AreEqual("Welcome to Trello!", board["cards"][0]["name"]);
+            Assert.AreEqual("Trello.net API/Router Board", board["name"]);
         }
 
         [Test]
-        public void test2()
+        public void get_boards_should_return_boards_authenticated_user_has_access()
         {
-
-           
-            dynamic cards = Api.Get().Cards("");
+            dynamic cards = Api.Get().Boards();
             Assert.AreEqual("4f2bf38d72b7c1293517af86", cards[0]["id"]);
             //cards[0]["id"].Should().Be("4f2bf38d72b7c1293517af86");
         }
-    }
-
-
-    public static class TestConstants
-    {
-        public const string ApiKey = "ce55781ad91b8024c67b6fe52c3f732a";
-
-        //detroitproapitest
-        public const string OAuthAccessToken = "1304827778ec13c9065d55ee47541d2f048dc996b70b68ba6f7e00bfa723692e"; 
     }
 }
