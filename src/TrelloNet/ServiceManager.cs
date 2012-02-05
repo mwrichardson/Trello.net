@@ -20,14 +20,16 @@ namespace TrelloNet
         }
 
 
-        public dynamic Execute(RestRequest request)
+        public T Execute<T>(RestRequest request)  where T : new()
         {
-            var response = _restClient.Execute<dynamic>(request);
-            Console.WriteLine(response.Content.ToString(CultureInfo.InvariantCulture));
+            var response = _restClient.Execute<T>(request);
+            return response.Data;
 
-            var javaScriptSerializer = new JavaScriptSerializer();
-            var deserialized = javaScriptSerializer.Deserialize<dynamic>(response.Content);
-            return deserialized;
+            //Console.WriteLine(response.Content.ToString(CultureInfo.InvariantCulture));
+
+            //var javaScriptSerializer = new JavaScriptSerializer();
+            //var deserialized = javaScriptSerializer.Deserialize<T>(response.Content);
+            //return deserialized;
         }
     }
 }

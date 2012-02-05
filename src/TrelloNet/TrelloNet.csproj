@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Domain\Card.cs" />
     <Compile Include="Domain\CardData.cs" />
+    <Compile Include="Domain\Board.cs" />
     <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\Resources.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

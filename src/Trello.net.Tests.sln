@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trello.net.Tests", "Trello.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrelloNet", "TrelloNet\TrelloNet.csproj", "{2E12EBE0-580F-428A-9E14-07C3AFAC834B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{4FBDD961-DCA5-473C-9174-0C8A0F56A4BE}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.markdown = ..\README.markdown
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

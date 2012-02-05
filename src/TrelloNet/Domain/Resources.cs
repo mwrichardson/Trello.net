@@ -16,24 +16,24 @@ namespace TrelloNet.Domain
             _serviceManager = serviceManager;
         }
 
-        public dynamic Cards(string boardId)
+        public IEnumerable<Card> Cards(string boardId)
         {
-            var request = new RestRequest("/1/boards/{board_id}", Method.GET);
+            var request = new RestRequest("/1/boards/{board_id}/cards", Method.GET);
         
-            request.AddParameter("cards", "all");
+            //request.AddParameter("cards", "all");
             request.AddUrlSegment("board_id", boardId);
-            var response = _serviceManager.Execute(request);
+            var response = _serviceManager.Execute<List<Card>>(request);
             return response;
         }
 
 
-        public dynamic Boards()
+        public IEnumerable<Board> Boards()
         {
             var request = new RestRequest
             {
                 Resource = "/1/members/me/boards"
             };
-            var response = _serviceManager.Execute(request);
+            var response = _serviceManager.Execute<List<Board>>(request);
             return response;
         }
     }
