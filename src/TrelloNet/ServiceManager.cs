@@ -23,13 +23,8 @@ namespace TrelloNet
         public T Execute<T>(RestRequest request)  where T : new()
         {
             var response = _restClient.Execute<T>(request);
+            Console.WriteLine(response.Content);
             return response.Data;
-
-            //Console.WriteLine(response.Content.ToString(CultureInfo.InvariantCulture));
-
-            //var javaScriptSerializer = new JavaScriptSerializer();
-            //var deserialized = javaScriptSerializer.Deserialize<T>(response.Content);
-            //return deserialized;
         }
     }
 }

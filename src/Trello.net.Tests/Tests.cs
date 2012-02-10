@@ -10,8 +10,6 @@ namespace Trello.net.Tests
     [TestFixture]
     public class Tests : TestBase
     {
-     
-
         [Test]
         public void get_card_test()
         {
@@ -27,9 +25,17 @@ namespace Trello.net.Tests
         }
 
         [Test]
+        public void get_actions_()
+        {
+            //var actions = Api.Get().Actions()
+        }
+
+
+        [Test]
         public void get_boards_should_return_boards_authenticated_user_has_access()
         {
             var boards = Api.Get().Boards();
+            
             boards.Should().NotBeNull();
             boards.FirstOrDefault().Id.Should().Be("4f2bf38d72b7c1293517af86");
         }

@@ -26,6 +26,13 @@ namespace TrelloNet.Domain
             return response;
         }
 
+        public Board Actions(string boardId)
+        {
+            var request = new RestRequest("/1/boards/{board_id}", Method.GET);
+            request.AddParameter("actions", "all");
+            var response = _serviceManager.Execute<Board>(request);
+            return response;
+        }
 
         public IEnumerable<Board> Boards()
         {
@@ -33,6 +40,7 @@ namespace TrelloNet.Domain
             {
                 Resource = "/1/members/me/boards"
             };
+            request.AddParameter("actions", "all");
             var response = _serviceManager.Execute<List<Board>>(request);
             return response;
         }
