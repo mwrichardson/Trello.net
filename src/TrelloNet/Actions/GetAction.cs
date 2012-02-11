@@ -4,9 +4,9 @@ using TrelloNet.Domain;
 
 namespace TrelloNet.Actions
 {
-    public class GetAction : BaseAction
+    public class GetAction
     {
-        public GetAction(ServiceManager serviceManager) : base(serviceManager)
+        public GetAction()
         {
         }
 
@@ -19,6 +19,7 @@ namespace TrelloNet.Actions
             var response = ServiceManager.Execute<List<Card>>(request);
             return response;
         }
+
 
         public List<Action> Actions(string boardId)
         {

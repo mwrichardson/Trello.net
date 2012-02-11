@@ -1,8 +1,8 @@
 ﻿namespace TrelloNet.Actions
 {
-    public class CreateAction : BaseAction
+    public class CreateAction
     {
-        public CreateAction(ServiceManager serviceManager) : base(serviceManager)
+        public CreateAction()
         {
         }
     }

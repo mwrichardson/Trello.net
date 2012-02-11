@@ -11,13 +11,12 @@ namespace TrelloNet
         
         public static void Init(string token, string key)
         {
-            _getAction = new GetAction(new ServiceManager(token, key));
-            _createAction = new CreateAction(new ServiceManager(token, key));
-            _updateAction = new UpdateAction(new ServiceManager(token, key));
-            _deleteAction = new DeleteAction(new ServiceManager(token, key));
+            ServiceManager.Init(token,key);
+            _getAction = new GetAction();
+            _createAction = new CreateAction();
+            _updateAction = new UpdateAction();
+            _deleteAction = new DeleteAction();
         }
-
-     
 
         public static GetAction Get()
         {

@@ -1,26 +1,24 @@
 using System;
-using System.Globalization;
-using System.Web.Script.Serialization;
 using RestSharp;
 
 namespace TrelloNet
 {
-    public class ServiceManager
+    public static class ServiceManager
     {
-        private RestClient _restClient;
-        
-        public ServiceManager(string oauthToken, string key)
+        private static RestClient _restClient;
+
+        public static void Init(string token, string key)
         {
             _restClient = new RestClient("https://api.trello.com")
-                              {
-                                  Authenticator = new OAuth2UriQueryParameterAuthenticator(oauthToken)
+            {
+                Authenticator = new OAuth2UriQueryParameterAuthenticator(token)
 
-                              };
+            };
             _restClient.AddDefaultParameter("key", key);
         }
 
 
-        public T Execute<T>(RestRequest request)  where T : new()
+        public static T Execute<T>(RestRequest request)  where T : new()
         {
             var response = _restClient.Execute<T>(request);
             Console.WriteLine(response.Content);

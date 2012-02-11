@@ -1,8 +1,8 @@
 ﻿namespace TrelloNet.Actions
 {
-    public class DeleteAction : BaseAction
+    public class DeleteAction
     {
-        public DeleteAction(ServiceManager serviceManager) : base(serviceManager)
+        public DeleteAction()
         {
         }
     }
