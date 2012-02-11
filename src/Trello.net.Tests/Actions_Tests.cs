@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentAssertions;
 using NUnit.Framework;
+using TrelloNet;
 using TrelloNet.Domain;
 
 namespace Trello.net.Tests
@@ -11,7 +12,7 @@ namespace Trello.net.Tests
         [Test]
         public void get_all_actions_by_boardid()
         {
-            var actions = TrelloNet.TrelloNet.Get().Actions(TrelloNetBoardId);
+            var actions = TrelloWrapper.Get().Actions(TrelloNetBoardId);
             actions.Should().NotBeNull();
             actions.ForEach(x => Console.WriteLine(x.Type));
         }
@@ -19,7 +20,7 @@ namespace Trello.net.Tests
         [Test]
         public void get_actions_filtered_by_single_actionType()
         {
-            var actions = TrelloNet.TrelloNet.Get().Actions(TrelloNetBoardId, ActionType.CreateCard);
+            var actions = TrelloWrapper.Get().Actions(TrelloNetBoardId, ActionType.CreateCard);
             actions.Should().NotBeNull();
             actions.ForEach(x => Console.WriteLine(x.Type));
             actions.ForEach(x => Assert.IsTrue(x.Type == ActionType.CreateCard));
@@ -28,7 +29,7 @@ namespace Trello.net.Tests
         [Test]
         public void get_actions_filtered_by_array_of_actionTypes()
         {
-            var actions = TrelloNet.TrelloNet.Get().Actions(TrelloNetBoardId, new[] { ActionType.CreateCard, ActionType.UpdateList, });
+            var actions = TrelloWrapper.Get().Actions(TrelloNetBoardId, new[] { ActionType.CreateCard, ActionType.UpdateList, });
             actions.Should().NotBeNull();
             actions.ForEach(x => Console.WriteLine(x.Type));
             actions.ForEach(x => Assert.IsTrue((x.Type == ActionType.CreateCard || x.Type == ActionType.UpdateList)));
