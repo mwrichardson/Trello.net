@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
-using TrelloNet;
-using Action = TrelloNet.Domain.Action;
 
 
 namespace Trello.net.Tests
@@ -23,14 +19,7 @@ namespace Trello.net.Tests
             cards.FirstOrDefault(x => x.Id == "4f2ec5f89b7c4ed736a2391b").Name.Should().Be("List of connected systems for routing");
         }
 
-        [Test]
-        public void get_actions_test()
-        {
-            List<Action> actions = TrelloNet.TrelloNet.Get().Actions(TrelloNetBoardId);
-            actions.Should().NotBeNull();
-            actions.ForEach(x=>Console.WriteLine(x.Type));
-        }
-
+     
 
         [Test]
         public void get_boards_should_return_boards_authenticated_user_has_access()

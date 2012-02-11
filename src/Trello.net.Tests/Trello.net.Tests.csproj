@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions_Tests.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="TestConstants.cs" />
     <Compile Include="Tests.cs" />
