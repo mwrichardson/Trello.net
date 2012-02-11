@@ -15,29 +15,29 @@ namespace TrelloNet.Domain
 
     public enum ActionType
     {
-       createCard
-       ,commentCard
-       ,updateCard
-       ,updateCardidList //WAT?
-       ,updateCardclosed //WAT?
-       ,updateCarddesc
-       ,updateCardname
-       ,addMemberToCard
-       ,removeMemberFromCard
-       ,updateCheckItemStateOnCard
-       ,addAttachmentToCard
-       ,removeAttachmentFromCard
-       ,addChecklistToCard
-       ,removeChecklistFromCard
-       ,createList
-       ,updateList
-       ,createBoard
-       ,updateBoard
-       ,addMemberToBoard
-       ,removeMemberFromBoard
-       ,addToOrganizationBoard
-       ,removeFromOrganizationBoard
-       ,createOrganization
-       ,updateOrganization
+       CreateCard
+       ,CommentCard
+       ,UpdateCard
+       ,UpdateCardidList //WAT?
+       ,UpdateCardclosed //WAT?
+       ,UpdateCarddesc
+       ,UpdateCardname
+       ,AddMemberToCard
+       ,RemoveMemberFromCard
+       ,UpdateCheckItemStateOnCard
+       ,AddAttachmentToCard
+       ,RemoveAttachmentFromCard
+       ,AddChecklistToCard
+       ,RemoveChecklistFromCard
+       ,CreateList
+       ,UpdateList
+       ,CreateBoard
+       ,UpdateBoard
+       ,AddMemberToBoard
+       ,RemoveMemberFromBoard
+       ,AddToOrganizationBoard
+       ,RemoveFromOrganizationBoard
+       ,CreateOrganization
+       ,UpdateOrganization
     }
 }
