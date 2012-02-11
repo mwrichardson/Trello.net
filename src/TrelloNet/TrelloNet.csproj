@@ -56,7 +56,7 @@
     <Compile Include="Domain\Data.cs" />
     <Compile Include="Domain\Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Api.cs" />
+    <Compile Include="TrelloNet.cs" />
     <Compile Include="ServiceManager.cs" />
   </ItemGroup>
   <ItemGroup />
