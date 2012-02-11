@@ -22,43 +22,43 @@ namespace TrelloNet.Actions
             return response;
         }
 
-        //TODO: FIX THIS!!!!
+
 
         public List<Action> Actions(string boardId)
         {
-            //"4f2bf38d72b7c1293517af86"
-            var request = new RestRequest("/1/boards/{board_id}", Method.GET);
-            request.AddUrlSegment("board_id", boardId);
-            request.AddParameter("actions", "all");
-            var board = ServiceManager.Execute<Board>(request);
-            var response = board.Actions;
-            return response;
+            return Actions(boardId, null, null);
         }
 
         public List<Action> Actions(string boardId, ActionType action)
         {
-            //"4f2bf38d72b7c1293517af86"
-            var request = new RestRequest("/1/boards/{board_id}", Method.GET);
-            request.AddUrlSegment("board_id", boardId);
-            request.AddParameter("actions", action.ToString().LowerFirst());
-            var board = ServiceManager.Execute<Board>(request);
-            var response = board.Actions;
-            return response;
+            return Actions(boardId, action, null);
         }
 
         public List<Action> Actions(string boardId, ActionType[] actions)
         {
-            //"4f2bf38d72b7c1293517af86"
+            return Actions(boardId, null, actions);
+        }
+
+        public List<Action> Actions(string boardId,  ActionType? action, ActionType[] actions)
+        {
             var request = new RestRequest("/1/boards/{board_id}", Method.GET);
             request.AddUrlSegment("board_id", boardId);
-            request.AddParameter("actions", string.Join(",", actions.ToList().Select(x=>x.ToString().LowerFirst())));
+            
+            if(actions!=null)
+                request.AddParameter("actions", string.Join(",", actions.ToList().Select(x => x.ToString().LowerFirst())));
+
+            if(action.HasValue)
+                request.AddParameter("actions", action.ToString().LowerFirst());
+
+
+            if(!action.HasValue && actions==null)
+                request.AddParameter("actions", "all");
+
             var board = ServiceManager.Execute<Board>(request);
             var response = board.Actions;
             return response;
         }
 
-        //TODO: FIX THIS!!!! ^^^
-        //Clean up overloads....This Actions method(s) is some yuck.
 
         public IEnumerable<Board> Boards()
         {
