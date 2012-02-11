@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
 using TrelloNet;
+using Action = TrelloNet.Domain.Action;
 
 
 namespace Trello.net.Tests
@@ -16,15 +18,17 @@ namespace Trello.net.Tests
             //The only way to get cards is to call in and request a board. the board has an array of cards on it.
             //we might want to create C# domain objects for each response type.
             //we prob want to but I have not got around it it just yet.
-            var cards = Api.Get().Cards("4f2bf38d72b7c1293517af86");
+            var cards = Api.Get().Cards(TrelloNetBoardId);
             cards.Should().NotBeNull();
             cards.FirstOrDefault(x => x.Id == "4f2ec5f89b7c4ed736a2391b").Name.Should().Be("List of connected systems for routing");
         }
 
         [Test]
-        public void get_actions_()
+        public void get_actions_test()
         {
-            //var actions = Api.Get().Actions()
+            List<Action> actions = Api.Get().Actions(TrelloNetBoardId);
+            actions.Should().NotBeNull();
+            actions.ForEach(x=>Console.WriteLine(x.Type));
         }
 
 
@@ -35,7 +39,7 @@ namespace Trello.net.Tests
 
             boards.Should().NotBeNull();
             //Trello.net API/Router Board this board ID = 4f2bf38d72b7c1293517af86;
-            boards.FirstOrDefault(x => x.Id == "4f2bf38d72b7c1293517af86").Should().NotBeNull();
+            boards.FirstOrDefault(x => x.Id == TrelloNetBoardId).Should().NotBeNull();
         }
     }
 }

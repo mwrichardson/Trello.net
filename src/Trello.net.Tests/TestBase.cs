@@ -5,6 +5,9 @@ namespace Trello.net.Tests
 {
     public class TestBase
     {
+
+        protected const string TrelloNetBoardId = "4f2bf38d72b7c1293517af86";
+
         [TestFixtureSetUp]
         public void FixtureSetUp()
         {

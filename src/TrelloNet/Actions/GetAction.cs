@@ -20,11 +20,14 @@ namespace TrelloNet.Actions
             return response;
         }
 
-        public Board Actions(string boardId)
+        public List<Action> Actions(string boardId)
         {
+            //"4f2bf38d72b7c1293517af86"
             var request = new RestRequest("/1/boards/{board_id}", Method.GET);
+            request.AddUrlSegment("board_id", boardId);
             request.AddParameter("actions", "all");
-            var response = ServiceManager.Execute<Board>(request);
+            var board = ServiceManager.Execute<Board>(request);
+            var response = board.Actions;
             return response;
         }
 
