@@ -32,7 +32,7 @@ namespace Trello.net.Tests
         public void get_boards_should_return_boards_authenticated_user_has_access()
         {
             var boards = Api.Get().Boards();
-            
+
             boards.Should().NotBeNull();
             //Trello.net API/Router Board this board ID = 4f2bf38d72b7c1293517af86;
             boards.FirstOrDefault(x => x.Id == "4f2bf38d72b7c1293517af86").Should().NotBeNull();
