@@ -19,9 +19,6 @@ namespace Trello.net.Tests
             var cards = Api.Get().Cards("4f2bf38d72b7c1293517af86");
             cards.Should().NotBeNull();
             cards.FirstOrDefault(x => x.Id == "4f2ec5f89b7c4ed736a2391b").Name.Should().Be("List of connected systems for routing");
-            //cards.FirstOrDefault().
-            //Assert.AreEqual("Welcome to Trello!", car);
-            //Assert.AreEqual("Trello.net API/Router Board", board["name"]);
         }
 
         [Test]
@@ -37,7 +34,8 @@ namespace Trello.net.Tests
             var boards = Api.Get().Boards();
             
             boards.Should().NotBeNull();
-            boards.FirstOrDefault().Id.Should().Be("4f2bf38d72b7c1293517af86");
+            //Trello.net API/Router Board this board ID = 4f2bf38d72b7c1293517af86;
+            boards.FirstOrDefault(x => x.Id == "4f2bf38d72b7c1293517af86").Should().NotBeNull();
         }
     }
 }
