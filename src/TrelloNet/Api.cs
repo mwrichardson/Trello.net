@@ -1,40 +1,43 @@
+using TrelloNet.Actions;
 using TrelloNet.Domain;
 
 namespace TrelloNet
 {
     public static class Api
     {
-       
-        private static Resources _resources;
-
+        private static GetAction _getAction;
+        private static CreateAction _createAction;
+        private static UpdateAction _updateAction;
+        private static DeleteAction _deleteAction;
+        
         public static void Init(string token, string key)
         {
-            _resources.SetServiceManager(new ServiceManager(token, key));
+            _getAction = new GetAction(new ServiceManager(token, key));
+            _createAction = new CreateAction(new ServiceManager(token, key));
+            _updateAction = new UpdateAction(new ServiceManager(token, key));
+            _deleteAction = new DeleteAction(new ServiceManager(token, key));
         }
 
-        static Api()
+     
+
+        public static GetAction Get()
         {
-            _resources = new Resources();
+            return _getAction;
         }
 
-        public static Resources Get()
+        public static CreateAction Create()
         {
-            return _resources;
+            return _createAction;
         }
 
-        public static Resources Create()
+        public static UpdateAction Update()
         {
-            return _resources;
+            return _updateAction;
         }
 
-        public static Resources Update()
+        public static DeleteAction Delete()
         {
-            return _resources;
-        }
-
-        public static Resources Delete()
-        {
-            return _resources;
+            return _deleteAction;
         }
 
 

@@ -18,7 +18,7 @@ namespace Trello.net.Tests
             //we prob want to but I have not got around it it just yet.
             var cards = Api.Get().Cards("4f2bf38d72b7c1293517af86");
             cards.Should().NotBeNull();
-            cards.FirstOrDefault().Name.Should().Be("Create strong types for resources currently returning dynamic");
+            cards.FirstOrDefault(x => x.Id == "4f2ec5f89b7c4ed736a2391b").Name.Should().Be("List of connected systems for routing");
             //cards.FirstOrDefault().
             //Assert.AreEqual("Welcome to Trello!", car);
             //Assert.AreEqual("Trello.net API/Router Board", board["name"]);

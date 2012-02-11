@@ -1,28 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Web.Script.Serialization;
+﻿using System.Collections.Generic;
 using RestSharp;
+using TrelloNet.Domain;
 
-namespace TrelloNet.Domain
+namespace TrelloNet.Actions
 {
-    public class Resources
+    public class GetAction : BaseAction
     {
-        internal static ServiceManager _serviceManager;
-
-        public void SetServiceManager(ServiceManager serviceManager)
+        public GetAction(ServiceManager serviceManager) : base(serviceManager)
         {
-
-            _serviceManager = serviceManager;
         }
 
         public IEnumerable<Card> Cards(string boardId)
         {
             var request = new RestRequest("/1/boards/{board_id}/cards", Method.GET);
-        
+
             //request.AddParameter("cards", "all");
             request.AddUrlSegment("board_id", boardId);
-            var response = _serviceManager.Execute<List<Card>>(request);
+            var response = ServiceManager.Execute<List<Card>>(request);
             return response;
         }
 
@@ -30,7 +24,7 @@ namespace TrelloNet.Domain
         {
             var request = new RestRequest("/1/boards/{board_id}", Method.GET);
             request.AddParameter("actions", "all");
-            var response = _serviceManager.Execute<Board>(request);
+            var response = ServiceManager.Execute<Board>(request);
             return response;
         }
 
@@ -40,8 +34,8 @@ namespace TrelloNet.Domain
             {
                 Resource = "/1/members/me/boards"
             };
-            request.AddParameter("actions", "all");
-            var response = _serviceManager.Execute<List<Board>>(request);
+            //request.AddParameter("actions", "all");
+            var response = ServiceManager.Execute<List<Board>>(request);
             return response;
         }
     }
