@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcludeFromSourceControl.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="TestConstants.cs" />
     <Compile Include="Tests.cs" />
