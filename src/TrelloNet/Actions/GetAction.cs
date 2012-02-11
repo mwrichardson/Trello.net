@@ -32,6 +32,7 @@ namespace TrelloNet.Actions
             return response;
         }
 
+
         public IEnumerable<Board> Boards()
         {
             var request = new RestRequest
