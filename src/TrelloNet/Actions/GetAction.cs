@@ -8,21 +8,23 @@ namespace TrelloNet.Actions
 {
     public class GetAction
     {
-        public GetAction()
+
+        public Card Card(string CardId)
         {
+            var request = new RestRequest("/1/cards/{card_id}", Method.GET);
+            request.AddUrlSegment("card_id", CardId);
+            var response = ServiceManager.Execute<Card>(request);
+            return response;
         }
 
         public IEnumerable<Card> Cards(string boardId)
         {
             var request = new RestRequest("/1/boards/{board_id}/cards", Method.GET);
-
-            //request.AddParameter("cards", "all");
+            request.AddParameter("cards", "all");
             request.AddUrlSegment("board_id", boardId);
             var response = ServiceManager.Execute<List<Card>>(request);
             return response;
         }
-
-
 
         public List<Action> Actions(string boardId)
         {
@@ -58,8 +60,7 @@ namespace TrelloNet.Actions
             var response = board.Actions;
             return response;
         }
-
-
+        
         public IEnumerable<Board> Boards()
         {
             var request = new RestRequest
@@ -70,5 +71,17 @@ namespace TrelloNet.Actions
             var response = ServiceManager.Execute<List<Board>>(request);
             return response;
         }
+
+        public Member Member(string usernameOrId, CardType cardType = CardType.None)
+        {
+            var request = new RestRequest("/1/members/{username}", Method.GET);
+            request.AddUrlSegment("username", usernameOrId);
+
+            request.AddParameter("cards", cardType.ToString().ToLower());
+
+            var member = ServiceManager.Execute<Member>(request);
+            return member;
+        }
+
     }
 }

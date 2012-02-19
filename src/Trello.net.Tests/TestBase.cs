@@ -7,6 +7,9 @@ namespace Trello.net.Tests
     {
 
         protected const string TrelloNetBoardId = "4f2bf38d72b7c1293517af86";
+        protected const string TrelloMemberUsername = "ericpolerecky";
+        protected const string TrelloMemberId = "4f2abcd7bb07915e11835c8c";
+        protected const string TrellCardId = "4f2ec363efab2bbd4eb7af3c";
 
         [TestFixtureSetUp]
         public void FixtureSetUp()

@@ -7,10 +7,10 @@ using TrelloNet.Domain;
 namespace Trello.net.Tests
 {
     [TestFixture]
-    public class Actions_Tests : TestBase
+    public class Get_Actions_Tests : TestBase
     {
         [Test]
-        public void get_all_actions_by_boardid()
+        public void all_actions_by_boardid()
         {
             var actions = TrelloWrapper.Get().Actions(TrelloNetBoardId);
             actions.Should().NotBeNull();
@@ -18,7 +18,7 @@ namespace Trello.net.Tests
         }
 
         [Test]
-        public void get_actions_filtered_by_single_actionType()
+        public void actions_filtered_by_single_actionType()
         {
             var actions = TrelloWrapper.Get().Actions(TrelloNetBoardId, ActionType.CreateCard);
             actions.Should().NotBeNull();
@@ -27,7 +27,7 @@ namespace Trello.net.Tests
         }
 
         [Test]
-        public void get_actions_filtered_by_array_of_actionTypes()
+        public void actions_filtered_by_array_of_actionTypes()
         {
             var actions = TrelloWrapper.Get().Actions(TrelloNetBoardId, new[] { ActionType.CreateCard, ActionType.UpdateList, });
             actions.Should().NotBeNull();

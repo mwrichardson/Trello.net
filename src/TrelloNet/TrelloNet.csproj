@@ -50,11 +50,14 @@
     <Compile Include="Actions\GetAction.cs" />
     <Compile Include="Actions\UpdateAction.cs" />
     <Compile Include="Domain\Action.cs" />
+    <Compile Include="Domain\ActionType.cs" />
     <Compile Include="Domain\Card.cs" />
     <Compile Include="Domain\CardData.cs" />
     <Compile Include="Domain\Board.cs" />
+    <Compile Include="Domain\CardType.cs" />
     <Compile Include="Domain\Data.cs" />
     <Compile Include="Domain\Entity.cs" />
+    <Compile Include="Domain\Member.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrelloWrapper.cs" />
