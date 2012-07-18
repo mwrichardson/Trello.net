@@ -1,4 +1,5 @@
 using TrelloNet.Actions;
+using System.Diagnostics;
 
 namespace TrelloNet
 {
@@ -18,21 +19,25 @@ namespace TrelloNet
             _deleteAction = new DeleteAction();
         }
 
+        [DebuggerStepThrough]
         public static GetAction Get()
         {
             return _getAction;
         }
 
+        [DebuggerStepThrough]
         public static CreateAction Create()
         {
             return _createAction;
         }
 
+        [DebuggerStepThrough]
         public static UpdateAction Update()
         {
             return _updateAction;
         }
 
+        [DebuggerStepThrough]
         public static DeleteAction Delete()
         {
             return _deleteAction;
