@@ -63,6 +63,26 @@ namespace TrelloNet.Domain
             }
         }
 
+        public string DueDateDescription
+        {
+            get
+            {
+                if (TimeUntilDue == null) return null;
+
+                if (TimeUntilDue.Value.Ticks > 0)
+                {
+                    return String.Format("due in {0}", TimeUntilDue.Value);
+                }
+
+                if (OverdueBy.Value.Ticks > 0)
+                {
+                    return String.Format("overdue by {0}", OverdueBy.Value);
+                }
+
+                return "due today";
+            }
+        }
+
         public List<Action> Actions { get; set; }
 
         public string Name { get; set; }
