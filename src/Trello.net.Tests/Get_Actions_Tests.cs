@@ -29,10 +29,10 @@ namespace Trello.net.Tests
         [Test]
         public void actions_filtered_by_array_of_actionTypes()
         {
-            var actions = TrelloWrapper.Get().Actions(TrelloNetBoardId, new[] { ActionType.CreateCard, ActionType.UpdateList, });
+            var actions = TrelloWrapper.Get().Actions(TrelloNetBoardId, new[] { ActionType.CreateCard, ActionType.UpdateCard_idList, });
             actions.Should().NotBeNull();
             actions.ForEach(x => Console.WriteLine(x.Type));
-            actions.ForEach(x => Assert.IsTrue((x.Type == ActionType.CreateCard || x.Type == ActionType.UpdateList)));
+            actions.ForEach(x => Assert.IsTrue((x.Type == ActionType.CreateCard || x.Type == ActionType.UpdateCard_idList)));
         }
 
     }

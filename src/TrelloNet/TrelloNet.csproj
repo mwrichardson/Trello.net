@@ -51,6 +51,7 @@
     <Compile Include="Actions\UpdateAction.cs" />
     <Compile Include="Domain\Action.cs" />
     <Compile Include="Domain\ActionType.cs" />
+    <Compile Include="Domain\Badges.cs" />
     <Compile Include="Domain\Card.cs" />
     <Compile Include="Domain\CardData.cs" />
     <Compile Include="Domain\Board.cs" />
