@@ -53,6 +53,16 @@ namespace TrelloNet.Domain
             }
         }
 
+        public TimeSpan? InferredEstimate
+        {
+            get
+            {
+                return (Badges.Due != null)
+                    ? (TimeSpan?)(Badges.Due.Value.Date - CreationDate.Date)
+                    : null;
+            }
+        }
+
         public List<Action> Actions { get; set; }
 
         public string Name { get; set; }
